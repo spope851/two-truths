@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Truths from '../data/test.json'
-
   type Truth = {
     id: number;
     sentence: string;
@@ -21,10 +19,10 @@
     "is_true":"1"
   }]
 
-  export const getTruths: () => Truth[] = () => Truths as Truth[]
+  export let getTruths: () => Promise<Truth[]>
 
-  const replay = () => {
-    truths = getTruths()
+  const replay = async () => {
+    truths = await getTruths() || truths
     state = [
       0,
       0,
@@ -70,16 +68,16 @@
       }, 2000)
     }
   }
-  
-</script>
 
-<head>
+  </script>
+
+  <head>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
-</head>
-<main>
+  </head>
+  <main>
   <div id="game" class="animate__animated">
     <h2>
       Guess which two are true!
@@ -105,39 +103,39 @@
       </div>
     {/if}
   </div>
-</main>
+  </main>
 
-<style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+  <style>
+    :root {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 
-  #game {
-    display: grid;
-    grid-auto-rows: 1fr;
-    margin: auto;
-    place-items: center;
-  }
+    #game {
+      display: grid;
+      grid-auto-rows: 1fr;
+      margin: auto;
+      place-items: center;
+    }
 
-  button {
-    font-family: inherit;
-    font-size: inherit;
-    padding: 1em 2em;
-    color: #ff3e00;
-    background-color: rgba(255, 62, 0, 0.1);
-    border-radius: 2em;
-    border: 2px solid rgba(255, 62, 0, 0);
-    outline: none;
-    font-variant-numeric: tabular-nums;
-    cursor: pointer;
-  }
+    button {
+      font-family: inherit;
+      font-size: inherit;
+      padding: 1em 2em;
+      color: #ff3e00;
+      background-color: rgba(255, 62, 0, 0.1);
+      border-radius: 2em;
+      border: 2px solid rgba(255, 62, 0, 0);
+      outline: none;
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+    }
 
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
-</style>
+    main {
+      text-align: center;
+      padding: 1em;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>

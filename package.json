@@ -1,6 +1,6 @@
 {
 	"name": "two-truths",
-	"version": "1.0.6",
+	"version": "1.0.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/spope851/two-truths.git"
@@ -27,7 +27,7 @@
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"exports": {
-		".": "./LanguageFlash.svelte"
+		".": "./TwoTruths.svelte"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.22.2",
