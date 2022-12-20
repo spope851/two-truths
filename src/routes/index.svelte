@@ -30,7 +30,15 @@
       0,
       0,
     ]
-    correctAnswers = 0
+    correctAnswers = 0;
+    [0, 1, 2].forEach(n => {
+      const element = document.getElementById(`truth${n}`)
+      if (element) {
+        element.classList.remove('animate__pulse')
+        element.classList.remove('animate__hinge')
+        element.classList.add('animate__fadeIn')
+      }
+    })
   }
 
   replay()
